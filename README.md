@@ -22,7 +22,18 @@ npm install
 
 This installs necessary dependencies for both frontend and backend.
 
-### 2. Setting Up PostgreSQL
+### 2. Create the .env File
+Inside your server directory, create a .env file with the following contents:
+
+```
+PORT=3001
+DATABASE_HOST=localhost
+DATABASE_USER=resistor_user
+DATABASE_PASSWORD=your_secure_password
+DATABASE_NAME=resistor_calculator
+```
+
+### 3. Setting Up PostgreSQL
 
 - Install PostgreSQL
 - Download [PostgreSQL from the official site](https://www.postgresql.org/download/).
@@ -52,7 +63,7 @@ GRANT ALL PRIVILEGES ON DATABASE resistor_calculator TO resistor_user;
 GRANT ALL PRIVILEGES ON SCHEMA public TO resistor_user;
 ```
 
-### 3. Initialize the Tables
+### 4. Initialize the Tables
 Using psql:
 
 `bash`
@@ -88,7 +99,7 @@ INSERT INTO resistor_colors (color, value, multiplier, tolerance) VALUES
 ```
 
 
-### 4. Running the Application
+### 5. Running the Application
 For the backend, navigate to the server directory:
 </br>
 `cd server`
