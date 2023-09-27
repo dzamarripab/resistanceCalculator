@@ -14,12 +14,11 @@ A full-stack application with a React frontend and Node.js backend to calculate 
 
 Navigate to both the `client` and `server` directories and run:
 
-<pre>
-bash
+
+`bash`
 ```
 npm install
 ```
-</pre>
 
 This installs necessary dependencies for both frontend and backend.
 
@@ -32,24 +31,22 @@ This installs necessary dependencies for both frontend and backend.
 - Create the Database
 Using `psql`:
 
+`bash`
 ```
-bash
 psql -U postgres
 ```
 
 Enter the `postgres` user password when prompted, then:
 
+`sql`
 ```
-sql
-
 CREATE DATABASE resistor_calculator;
 ```
 
 - Setting Up a User
 It's recommended not to use the postgres superuser for application connections. Instead, create a new user:
+`sql`
 ```
-sql
-
 CREATE USER resistor_user WITH PASSWORD 'your_secure_password';
 GRANT ALL PRIVILEGES ON DATABASE resistor_calculator TO resistor_user;
 GRANT ALL PRIVILEGES ON SCHEMA public TO resistor_user;
@@ -58,16 +55,15 @@ GRANT ALL PRIVILEGES ON SCHEMA public TO resistor_user;
 ### 3. Initialize the Tables
 Using psql:
 
+`bash`
 ```
-bash
 psql -U resistor_user -d resistor_calculator
 ```
 
 Now create your tables and insert the initial data. This might include the resistor_colors table and any other necessary data.
 
+`sql`
 ```
-sql
-
 CREATE TABLE resistor_colors (
     id SERIAL PRIMARY KEY,
     color VARCHAR(255) NOT NULL,
@@ -94,16 +90,16 @@ INSERT INTO resistor_colors (color, value, multiplier, tolerance) VALUES
 
 5. Running the Application
 For the backend, navigate to the server directory:
-`cd server``
+`cd server`
+`bash`
 ```
-bash
 npm start
 ```
 
 For the frontend, in a separate terminal, navigate to the client directory:
-`cd client``
+`cd client`
+`bash`
 ```
-bash
 npm start
 ```
 
