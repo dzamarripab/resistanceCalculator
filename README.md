@@ -15,8 +15,8 @@ A full-stack application with a React frontend and Node.js backend to calculate 
 Navigate to both the `client` and `server` directories and run:
 
 <pre>
-```
 bash
+```
 npm install
 ```
 </pre>
