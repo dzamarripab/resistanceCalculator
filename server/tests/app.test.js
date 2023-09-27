@@ -34,8 +34,8 @@ describe('POST /calculate', () => {
     const response = await request(app).post('/calculate').send({
       bandAColor: 'Red',
       bandBColor: 'Green',
-      bandCColor: 'Yellow',
-      // Missing bandDColor
+      multiplierColor: 'Yellow',
+      // Missing toleranceColor
     });
 
     expect(response.statusCode).toBe(400);
@@ -48,8 +48,8 @@ describe('POST /calculate', () => {
     const response = await request(app).post('/calculate').send({
       bandAColor: 'Red',
       bandBColor: 'Red',
-      bandCColor: 'Red',
-      bandDColor: 'Red',
+      multiplierColor: 'Red',
+      toleranceColor: 'Red',
     });
 
     expect(response.statusCode).toBe(200);

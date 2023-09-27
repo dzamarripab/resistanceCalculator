@@ -1,5 +1,5 @@
-function Resistor({ bandAColor, bandBColor, bandCColor, bandDColor }) {
-  const height = 30;
+function Resistor({ bandAColor, bandBColor, multiplierColor, toleranceColor }) {
+  const height = 40;
   return (
     <svg width="300" height="100" viewBox="0 0 300 100">
       {/* Resistor body */}
@@ -14,37 +14,37 @@ function Resistor({ bandAColor, bandBColor, bandCColor, bandDColor }) {
       />
 
       {/* Resistor connectors */}
-      <line x1="0" y1="55" x2="50" y2="55" stroke="#000" strokeWidth="3" />
-      <line x1="250" y1="55" x2="300" y2="55" stroke="#000" strokeWidth="3" />
+      <line x1="0" y1="60" x2="50" y2="60" stroke="#000" strokeWidth="3" />
+      <line x1="250" y1="60" x2="300" y2="60" stroke="#000" strokeWidth="3" />
 
       {/* Color bands */}
       <rect
         x="70"
         y="40"
-        width="15"
+        width="12"
         height={height}
         fill={bandAColor || 'transparent'}
       />
       <rect
         x="95"
         y="40"
-        width="15"
+        width="12"
         height={height}
         fill={bandBColor || 'transparent'}
       />
       <rect
         x="120"
         y="40"
-        width="15"
+        width="12"
         height={height}
-        fill={bandCColor || 'transparent'}
+        fill={multiplierColor || 'transparent'}
       />
       <rect
         x="145"
         y="40"
-        width="15"
+        width="12"
         height={height}
-        fill={bandDColor || 'transparent'}
+        fill={toleranceColor || 'transparent'}
       />
     </svg>
   );

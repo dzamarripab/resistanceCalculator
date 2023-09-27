@@ -9,9 +9,9 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/calculate', async (req, res) => {
-  const { bandAColor, bandBColor, bandCColor, bandDColor } = req.body;
+  const { bandAColor, bandBColor, multiplierColor, toleranceColor } = req.body;
 
-  if (!bandAColor || !bandBColor || !bandCColor || !bandDColor) {
+  if (!bandAColor || !bandBColor || !multiplierColor || !toleranceColor) {
     return res.status(400).json({ error: 'All color bands must be provided' });
   }
 
@@ -19,8 +19,8 @@ app.post('/calculate', async (req, res) => {
     const result = await calculateOhmValueModule(
       bandAColor,
       bandBColor,
-      bandCColor,
-      bandDColor
+      multiplierColor,
+      toleranceColor
     );
     res.json(result);
   } catch (error) {

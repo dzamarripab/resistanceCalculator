@@ -1,4 +1,4 @@
-.main-container{
+.main-container {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,10 +18,16 @@
   margin-bottom: 20px;
 }
 
+.selectors-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
 .band-select {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 15px;
   gap: 10px;
 }
@@ -69,7 +75,7 @@
   background-color: #0056b3;
 }
 
-.color-bands {
+.resistor-div {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
