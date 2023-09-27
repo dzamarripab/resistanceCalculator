@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const calculateOhmValueModule = require('./calculateOhmValue');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 
@@ -26,7 +25,7 @@ app.post('/calculate', async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error('Error calculating Ohm value:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -38,7 +37,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;

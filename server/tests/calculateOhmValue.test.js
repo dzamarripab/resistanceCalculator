@@ -1,20 +1,36 @@
 const calculateOhmValue = require('../calculateOhmValue');
+const db = require('../db');
 
-// Mock the database calls for testing
-jest.mock('../db', () => ({
-    select: jest.fn().mockReturnThis(),
-    from: jest.fn().mockReturnThis(),
-    where: jest.fn().mockImplementation(color => {
-        // Return mock data for specific colors
-        if (color === 'red') return { value: 2, multiplier: 100, tolerance: 2 };
-        return null;
-    })
-}));
+jest.mock('../db', () => {
+  return jest.fn().mockImplementation((tableName) => {
+    if (tableName === 'resistor_colors') {
+      return {
+        where: jest.fn().mockImplementation((column, value) => {
+          if (value === 'Red') {
+            return {
+              first: jest.fn().mockResolvedValue({
+                color: 'Red',
+                value: 2,
+                multiplier: 100,
+                tolerance: 1,
+              }),
+            };
+          }
+          return { first: jest.fn().mockResolvedValue(null) };
+        }),
+      };
+    }
+    return {};
+  });
+});
 
-describe('Ohm Value Calculator', () => {
-    it('calculates correct ohm values', async () => {
-        const result = await calculateOhmValue('red', 'red', 'red', 'red');
-        expect(result.ohmValue).toBe(2200); // This is a mock test, adjust values accordingly
-        expect(result.tolerance).toBe(2);
-    });
+describe('calculateOhmValue function', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should correctly calculate ohm value based on provided bands', async () => {
+    const result = await calculateOhmValue('Red', 'Red', 'Red', 'Red');
+    expect(result).toEqual({ ohmValue: 2200, tolerance: 1 });
+  });
 });
