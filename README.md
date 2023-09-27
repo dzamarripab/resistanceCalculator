@@ -88,16 +88,21 @@ INSERT INTO resistor_colors (color, value, multiplier, tolerance) VALUES
 ```
 
 
-5. Running the Application
+### 4. Running the Application
 For the backend, navigate to the server directory:
+</br>
 `cd server`
+</br>
 `bash`
+
 ```
 npm start
 ```
 
 For the frontend, in a separate terminal, navigate to the client directory:
+</br>
 `cd client`
+</br>
 `bash`
 ```
 npm start
